@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cena Resuelta — Menús caseros completos para recibir en casa sin cocinar. Entrada, principal y postre. Para 4 o 6 personas.">
+<meta name="keywords" content="cena resuelta, menú casero, catering casero, comida para eventos, Buenos Aires">
+<meta property="og:title" content="Cena Resuelta — Vos ponés la mesa, nosotros cocinamos">
+<meta property="og:description" content="Menús caseros completos para recibir en casa sin cocinar. Casero, abundante y listo para servir.">
+<meta property="og:type" content="website">
+<title>Cena Resuelta — Vos ponés la mesa, nosotros cocinamos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --crema:           #F5EFE3;
+    --crema-oscuro:    #EBE0CC;
+    --terracota:       #8B3A2A;
+    --terracota-claro: #C4573D;
+    --verde:           #2C3D2E;
+    --verde-medio:     #4A6741;
+    --dorado:          #C8963E;
+    --texto:           #2C2016;
+    --texto-suave:     #6B5240;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--crema);
+    font-family: 'Lora', serif;
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────── */
+  nav {
+    background: var(--verde);
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--crema);
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--crema-oscuro);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dorado); }
+  .nav-cta {
+    background: var(--terracota);
+    color: var(--crema) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--terracota-claro); color: var(--crema) !important; }
+
+  /* ── HERO ────────────────────────────────── */
+  .hero {
+    min-height: 92vh;
+    background: var(--verde);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-text {
+    padding: 4rem 3rem 4rem 5rem;
+    animation: fadeUp 0.9s ease both;
+  }
+  .eyebrow {
+    color: var(--dorado);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
+    color: var(--crema);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { color: var(--dorado); font-style: italic; }
+  .combo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(245,239,227,0.08);
+    border: 1px solid rgba(245,239,227,0.2);
+    border-radius: 2px;
+    padding: 0.6rem 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--crema-oscuro);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+  .combo-badge span { color: var(--dorado); }
+  .hero-sub {
+    color: var(--crema-oscuro);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--terracota);
+    color: var(--crema);
+    padding: 1rem 2.5rem;
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--terracota-claro); transform: translateY(-2px); }
+
+  .hero-visual { height: 92vh; overflow: hidden; }
+  .hero-visual svg { width: 100%; height: 100%; }
+
+  /* ── SECCIONES BASE ──────────────────────── */
+  .section-eyebrow {
+    color: var(--terracota);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    color: var(--verde);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  /* ── PROPUESTA ───────────────────────────── */
+  .propuesta { background: var(--crema); padding: 6rem 5rem; text-align: center; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 860px;
+    margin: 3.5rem auto 0;
+  }
+  .card {
+    background: var(--crema-oscuro);
+    border-radius: 3px;
+    padding: 2.25rem 1.75rem;
+    border-top: 3px solid var(--terracota);
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); }
+  .card-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--verde);
+    margin-bottom: 0.6rem;
+  }
+  .card-text { color: var(--texto-suave); font-size: 0.88rem; line-height: 1.7; }
+
+  /* ── MENÚ ────────────────────────────────── */
+  .menu-section { background: var(--crema-oscuro); padding: 6rem 5rem; }
+  .menu-header { text-align: center; margin-bottom: 3.5rem; }
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 3rem;
+    border: 1.5px solid var(--verde);
+    border-radius: 3px;
+    overflow: hidden;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    background: transparent;
+    border: none;
+    font-family: 'Lora', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-right: 1px solid var(--verde);
+  }
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn.active { background: var(--verde); color: var(--crema); }
+  .tab-btn:hover:not(.active) { background: rgba(44,61,46,0.08); }
+  .menu-panel { display: none; }
+  .menu-panel.active {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .menu-card {
+    background: var(--crema);
+    border-radius: 3px;
+    padding: 1.5rem 1.75rem;
+    border-left: 3px solid var(--terracota);
+    transition: transform 0.15s;
+  }
+  .menu-card:hover { transform: translateX(4px); }
+  .menu-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--terracota-claro);
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .menu-card p { color: var(--texto-suave); font-size: 0.85rem; line-height: 1.65; }
+
+  /* ── EXTRAS ──────────────────────────────── */
+  .extras-section { background: var(--crema); padding: 5rem 5rem; }
+  .extras-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .extras-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .extra-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .extra-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dorado); margin-top: 5px; flex-shrink: 0; }
+  .extra-item h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--terracota-claro);
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .extra-item p { color: var(--texto-suave); font-size: 0.85rem; line-height: 1.6; }
+  .extras-cta-box { background: var(--crema-oscuro); border-radius: 3px; padding: 2.5rem; text-align: center; }
+  .extras-cta-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--verde);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .extras-cta-box p { color: var(--texto-suave); font-size: 0.92rem; line-height: 1.75; margin-bottom: 1.75rem; }
+  .pills-wrap { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.75rem; }
+  .pill-tag {
+    padding: 0.4rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    border: 1.5px solid var(--verde-medio);
+    color: var(--verde);
+    font-family: 'Lora', serif;
+  }
+
+  /* ── PORCIONES ───────────────────────────── */
+  .porciones {
+    background: var(--terracota);
+    padding: 5rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .porciones-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    color: var(--crema);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .porciones-text p { color: rgba(245,239,227,0.82); font-size: 0.95rem; line-height: 1.85; margin-bottom: 2rem; }
+  .opciones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .opcion-card {
+    background: rgba(245,239,227,0.1);
+    border: 1px solid rgba(245,239,227,0.22);
+    border-radius: 3px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .opcion-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--crema); line-height: 1; }
+  .opcion-label { color: rgba(245,239,227,0.6); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* ── CÓMO FUNCIONA ───────────────────────── */
+  .como { background: var(--verde); padding: 6rem 5rem; text-align: center; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 860px;
+    margin: 3.5rem auto 0;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 14%; right: 14%;
+    height: 1px;
+    background: rgba(235,224,204,0.18);
+  }
+  .step { text-align: center; padding: 1.25rem 1rem; }
+  .step-num {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--terracota);
+    color: var(--crema);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+    position: relative; z-index: 1;
+  }
+  .step h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--crema); margin-bottom: 0.5rem; }
+  .step p { color: rgba(235,224,204,0.7); font-size: 0.84rem; line-height: 1.65; }
+
+  /* ── CONTACTO ────────────────────────────── */
+  .contacto { background: var(--crema); padding: 6rem 5rem; }
+  .contacto-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contacto-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    color: var(--verde);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  .contacto-left p { color: var(--texto-suave); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.25rem; }
+  .contacto-right { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-card {
+    background: var(--crema-oscuro);
+    border-radius: 3px;
+    padding: 1.4rem 1.6rem;
+    display: flex; align-items: center; gap: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.2s;
+    border-left: 3px solid transparent;
+  }
+  .contact-card:hover { transform: translateX(4px); }
+  .contact-card.wsp1 { border-left-color: #25D366; }
+  .contact-card.wsp1:hover { background: #f0faf3; }
+  .contact-card.wsp2 { border-left-color: #1da954; }
+  .contact-card.wsp2:hover { background: #f0faf3; }
+  .contact-card.mail { border-left-color: var(--dorado); }
+  .contact-card.mail:hover { background: #fdf7ee; }
+  .contact-card.ig { border-left-color: var(--terracota); }
+  .contact-card.ig:hover { background: #faf0ed; }
+  .cc-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cc-icon.green { background: #e6f9ee; }
+  .cc-icon.gold  { background: #fdf3e3; }
+  .cc-icon.red   { background: #faf0ed; }
+  .cc-body { flex: 1; }
+  .cc-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 0.15rem; }
+  .cc-value { font-family: 'Playfair Display', serif; color: var(--verde); font-size: 1rem; }
+  .cc-arrow { color: var(--texto-suave); font-size: 1rem; opacity: 0.4; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    background: #1A2418;
+    padding: 1.75rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; color: var(--crema-oscuro); font-size: 1rem; opacity: 0.65; }
+  .footer-text { color: var(--crema-oscuro); font-size: 0.75rem; opacity: 0.35; letter-spacing: 0.05em; }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 3.5rem 2rem 2rem; }
+    .hero-visual { height: 55vw; }
+    .propuesta, .menu-section, .extras-section, .como, .contacto { padding: 4rem 2rem; }
+    .cards-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .porciones { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2.5rem; }
+    .extras-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contacto-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: 2.2rem; }
+    .menu-panel.active { grid-template-columns: 1fr; }
+    .opciones-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMACIÓN ───────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Cena Resuelta</a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#contacto" class="nav-cta">Hacer mi pedido</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">Menús caseros completos</p>
+    <h1 class="hero-title">Vos ponés<br>la mesa.<br><em>Nosotros<br>cocinamos.</em></h1>
+    <div class="combo-badge"><span>Entrada</span> · <span>Principal</span> · <span>Postre</span></div>
+    <p class="hero-sub">Casero, abundante y listo para servir. Para recibir en casa sin cocinar.</p>
+    <a class="btn-primary" href="#contacto">Hacer mi pedido</a>
+  </div>
+  <div class="hero-visual">
+    <svg viewBox="0 0 560 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="560" height="700" fill="#2C3D2E"/>
+      <circle cx="280" cy="350" r="270" fill="#354A37" opacity="0.5"/>
+      <circle cx="280" cy="350" r="230" fill="#3B5038" opacity="0.4"/>
+      <ellipse cx="280" cy="370" rx="195" ry="190" fill="#EBE0CC"/>
+      <ellipse cx="280" cy="370" rx="183" ry="178" fill="#F5EFE3"/>
+      <ellipse cx="280" cy="370" rx="150" ry="148" fill="#EBE0CC"/>
+      <rect x="155" y="310" width="250" height="115" rx="8" fill="#C4573D"/>
+      <rect x="158" y="308" width="244" height="20" rx="4" fill="#D4704A"/>
+      <rect x="158" y="328" width="244" height="18" rx="2" fill="#A04430"/>
+      <rect x="158" y="346" width="244" height="18" rx="2" fill="#C8963E"/>
+      <rect x="158" y="364" width="244" height="18" rx="2" fill="#A04430"/>
+      <rect x="158" y="382" width="244" height="22" rx="4" fill="#E8C070" opacity="0.9"/>
+      <circle cx="200" cy="393" r="8" fill="#F5EFE3" opacity="0.7"/>
+      <circle cx="230" cy="396" r="6" fill="#F5EFE3" opacity="0.6"/>
+      <circle cx="260" cy="392" r="9" fill="#F5EFE3" opacity="0.7"/>
+      <circle cx="295" cy="395" r="7" fill="#F5EFE3" opacity="0.65"/>
+      <circle cx="325" cy="392" r="8" fill="#F5EFE3" opacity="0.7"/>
+      <circle cx="355" cy="396" r="6" fill="#F5EFE3" opacity="0.6"/>
+      <ellipse cx="215" cy="310" rx="12" ry="6" fill="#4A6741" transform="rotate(-20 215 310)"/>
+      <ellipse cx="345" cy="312" rx="10" ry="5" fill="#4A6741" transform="rotate(15 345 312)"/>
+      <ellipse cx="280" cy="308" rx="9" ry="5" fill="#5A7A50" transform="rotate(-5 280 308)"/>
+      <ellipse cx="280" cy="370" rx="195" ry="190" fill="none" stroke="#C8963E" stroke-width="1.5" opacity="0.35"/>
+      <rect x="468" y="210" width="7" height="130" rx="3.5" fill="#EBE0CC" opacity="0.5"/>
+      <ellipse cx="471.5" cy="205" rx="9" ry="13" fill="#EBE0CC" opacity="0.5"/>
+      <rect x="95" y="215" width="6" height="120" rx="3" fill="#EBE0CC" opacity="0.5"/>
+      <rect x="93" y="204" width="10" height="36" rx="2" fill="#EBE0CC" opacity="0.45"/>
+      <ellipse cx="420" cy="165" rx="16" ry="9" fill="#4A6741" opacity="0.35" transform="rotate(-25 420 165)"/>
+      <ellipse cx="145" cy="545" rx="18" ry="10" fill="#4A6741" opacity="0.3" transform="rotate(18 145 545)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- PROPUESTA -->
+<section class="propuesta">
+  <p class="section-eyebrow">Por qué elegirnos</p>
+  <h2 class="section-title">Cocina casera, sin el trabajo</h2>
+  <p class="section-desc" style="max-width:480px;margin:0 auto;">Todo lo que necesitás para recibir bien, preparado con dedicación y listo para poner en la mesa.</p>
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-icon">🍲</span>
+      <h3 class="card-title">Casero de verdad</h3>
+      <p class="card-text">Recetas hogareñas, ingredientes frescos, sabor de cocina propia.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🍽️</span>
+      <h3 class="card-title">Menú completo</h3>
+      <p class="card-text">Entrada, principal y postre. O pedís lo que necesitás por separado.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3 class="card-title">Listo para servir</h3>
+      <p class="card-text">Solo calentás, emplatás y disfrutás. Sin estrés ni vueltas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENÚ -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <p class="section-eyebrow">Nuestra propuesta</p>
+    <h2 class="section-title">El menú</h2>
+    <p class="section-desc" style="max-width:460px;margin:0 auto;">Todo hecho con cariño. Elegís una categoría o armás tu combo completo.</p>
+  </div>
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="entradas">Entradas</button>
+    <button class="tab-btn" data-tab="principales">Principales</button>
+    <button class="tab-btn" data-tab="postres">Postres</button>
+  </div>
+
+  <div class="menu-panel active" id="tab-entradas">
+    <div class="menu-card">
+      <h3>Sopa de zapallo cremosa</h3>
+      <p>Suave, casera y reconfortante.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Tabla de dips + pancitos</h3>
+      <p>6 dips caseros para compartir.</p>
+    </div>
+    <div class="menu-card" style="grid-column:1/-1;max-width:400px;margin:0 auto;width:100%;">
+      <h3>Bruschettas surtidas</h3>
+      <p>4 variedades sobre pan tostado, frescas y sabrosas.</p>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="tab-principales">
+    <div class="menu-card">
+      <h3>Lasagna casera gratinada</h3>
+      <p>Carne picada, jamón, queso, salsa blanca y salsa de tomate.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Pastel de papas</h3>
+      <p>Carne picada, queso, puré cremoso y gratinado.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Guiso de lentejas</h3>
+      <p>Lentejas, carne, chorizos, garbanzos, cebolla y morrón.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Paella</h3>
+      <p>Con pollo o pescado, arroz, frutos de mar, morrón y cebolla.</p>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="tab-postres">
+    <div class="menu-card">
+      <h3>Torta Capsha</h3>
+      <p>Chocolate, dulce de leche y mucha cremosidad.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Torta Oreo</h3>
+      <p>Fresca, cremosa y con el toque crocante de las Oreo.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Mousse de dulce de leche</h3>
+      <p>Con almendras y nueces.</p>
+    </div>
+    <div class="menu-card">
+      <h3>Torta Chajá</h3>
+      <p>Fresca, suave y perfecta para compartir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OTRAS OPCIONES -->
+<section class="extras-section">
+  <div class="extras-inner">
+    <div>
+      <p class="section-eyebrow">No solo para cenas</p>
+      <h2 class="section-title">Otras opciones de comidas</h2>
+      <p class="section-desc">Además de nuestros clásicos, armamos opciones especiales para tu mesa.</p>
+      <div class="extras-list">
+        <div class="extra-item">
+          <div class="extra-dot"></div>
+          <div><h4>Ñoquis de papa</h4><p>Caseros, suaves y listos para servir.</p></div>
+        </div>
+        <div class="extra-item">
+          <div class="extra-dot"></div>
+          <div><h4>Brochettes de pollo</h4><p>Prácticas, ricas e ideales para compartir.</p></div>
+        </div>
+        <div class="extra-item">
+          <div class="extra-dot"></div>
+          <div><h4>Fondue de carne o pollo</h4><p>La preparamos para que solo disfrutes.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="extras-cta-box">
+      <h3>Danos tu presupuesto</h3>
+      <p>Y armamos propuestas para tu cena. Contanos cuántos son y te organizamos todo.</p>
+      <div class="pills-wrap">
+        <span class="pill-tag">Menú a medida</span>
+        <span class="pill-tag">Porciones o combos</span>
+        <span class="pill-tag">Cenas y eventos</span>
+      </div>
+      <a class="btn-primary" href="#contacto">Escribinos y lo organizamos</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORCIONES -->
+<section class="porciones">
+  <div class="porciones-text">
+    <h2>Una cena especial, sin ocuparte de cocinar</h2>
+    <p>Consultanos precios o contanos tu presupuesto. Armamos una propuesta a medida para que disfrutes y quedes bien.</p>
+    <a class="btn-primary" href="#contacto" style="background:var(--crema);color:var(--terracota);font-weight:500;">Consultar precios</a>
+  </div>
+  <div class="opciones-grid">
+    <div class="opcion-card">
+      <div class="opcion-num">4</div>
+      <div class="opcion-label">personas</div>
+    </div>
+    <div class="opcion-card">
+      <div class="opcion-num">6</div>
+      <div class="opcion-label">personas</div>
+    </div>
+    <div class="opcion-card" style="grid-column:1/-1;text-align:center;">
+      <div style="color:rgba(245,239,227,0.45);font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;">También podés pedir por separado</div>
+      <div style="color:var(--crema);font-family:'Playfair Display',serif;font-size:1.05rem;">Entrada &nbsp;·&nbsp; Principal &nbsp;·&nbsp; Postre</div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <p class="section-eyebrow" style="color:var(--dorado);">Cómo funciona</p>
+  <h2 class="section-title" style="color:var(--crema);">En cuatro pasos</h2>
+  <p class="section-desc" style="color:rgba(235,224,204,0.7);max-width:460px;margin:0 auto;">Sin complicaciones. Desde que nos escribís hasta que abrís la puerta.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Elegís tu combo</h3>
+      <p>Menú completo o por partes. Para 4 o 6 personas.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Nos escribís</h3>
+      <p>Por WhatsApp, mail o Instagram. Confirmamos al toque.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Lo preparamos</h3>
+      <p>Cocinamos todo fresco para tu cena.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Ponés la mesa</h3>
+      <p>Recibís todo listo. Solo queda disfrutar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-left">
+      <p class="section-eyebrow">¿Tenés una cena?</p>
+      <h2>Escribinos y resolvemos todo</h2>
+      <p>Contanos cuántos son, qué querés y armamos una propuesta. Casero, abundante y listo para servir.</p>
+      <p style="font-size:0.85rem;color:var(--texto-suave);opacity:0.7;font-style:italic;">Respondemos por orden de llegada. Te confirmamos disponibilidad y precio a la brevedad.</p>
+    </div>
+    <div class="contacto-right">
+
+      <a class="contact-card wsp1" href="https://wa.me/5491144770088" target="_blank" rel="noopener">
+        <div class="cc-icon green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="cc-body">
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-value">11 4477-0088</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
+
+      <a class="contact-card wsp2" href="https://wa.me/5491162675843" target="_blank" rel="noopener">
+        <div class="cc-icon green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="cc-body">
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-value">11 6267-5843</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
+
+      <a class="contact-card mail" href="mailto:cenaresuelta@gmail.com">
+        <div class="cc-icon gold">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <div class="cc-label">Correo electrónico</div>
+          <div class="cc-value" style="font-size:0.9rem;">cenaresuelta@gmail.com</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
+
+      <a class="contact-card ig" href="https://www.instagram.com/cenaresueltaok" target="_blank" rel="noopener">
+        <div class="cc-icon red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#C4573D"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="cc-body">
+          <div class="cc-label">Instagram</div>
+          <div class="cc-value">@cenaresueltaok</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Cena Resuelta</div>
+  <div class="footer-text">@cenaresueltaok &nbsp;·&nbsp; cenaresuelta@gmail.com &nbsp;·&nbsp; Buenos Aires</div>
+</footer>
+
+<script>
+  // Tabs del menú
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.menu-panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Smooth scroll para navegación interna
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
